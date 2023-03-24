@@ -1,0 +1,49 @@
+<!-- when wishlist empty -->
+
+<div class="container mt-5 border p-5" *ngIf="eMsg">
+    <div class="row text-center">
+        <div class="col">
+            <img src="https://i.pinimg.com/originals/43/cb/59/43cb5919cac5a5e306192a9f8902c579.gif" alt="cart empty image" >
+            <h3 class="mt-3">Your wishlist is Empty</h3>
+            <a routerLink="/" class="btn btn-primary mt-3 ">Add to wishlist</a>
+        </div>
+    </div>
+</div>
+
+
+<!-- section -->
+
+<section class="py-5" >
+    <div class="container px-4 px-lg-5 mt-5">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-3 justify-content-center">
+            <div class="col mb-5" *ngFor="let product of wishList">
+                <div class="card h-100 align-items-center p-5">
+                    <!-- Product image-->
+                    <img class="card-img-top" [src]="product.image" alt="..." />
+                    <!-- Product details-->
+                    <div class="card-body p-4">
+                        <div class="text-center">
+                            <!-- Product name-->
+                            <h5 class="fw-bolder">{{product.title}}</h5>
+                            <!-- Product price-->
+                            $ {{product.price}}
+                        </div>
+                    </div>
+                    <!-- Product actions-->
+                    <div (click)="deleteFromWishlist(product)" class="card-footer p-4 pt-0 border-top-0 bg-transparent ">
+                    <button class="btn btn-outline-danger  me-5" >
+                        <i class="fa fa-trash"></i>
+                     </button>
+                     <button (click)="addToCart(product)" style="float:right;" class="btn btn-outline-success " >
+                      <i class="fa fa-cart-plus"></i>
+                   </button>
+                    </div>
+                          
+                </div>
+            </div>
+            
+                
+            
+        </div>
+    </div>
+</section>

@@ -1,0 +1,58 @@
+<!-- when cart empty -->
+
+<div class="container mt-5 border p-5" *ngIf="cartItems.length==0">
+    <div class="row text-center">
+        <div class="col">
+            <img width="500px" src="https://th.bing.com/th/id/R.335005b8eab00e041475d300c1478c4b?rik=dcZuMRlMy3Pu5w&riu=http%3a%2f%2fmcivils.ir%2fwp-content%2fthemes%2fmegawp%2fimg%2fcart-empty.gif&ehk=XJqY%2biGXghBsMXtCNAi5ovia%2fX2JmRVQIkEEib%2bJ%2b%2fk%3d&risl=&pid=ImgRaw&r=0" alt="cart empty image" >
+            <h3 class="mt-2">Your Cart is Empty</h3>
+            <button routerLink="/" class="btn btn-primary mt-2 ">Shop Now</button>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- cart with contents -->
+<div class="container mt-5 p-5" *ngIf="cartItems.length!=0">
+    <div class="row">
+        <div class="col">
+            <table class="table border">
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Name</th>
+                        <th>image</th>
+                        <th>Description</th>
+                        <th>Price</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- 1st row change according to user -->
+                    <tr *ngFor="let product of cartItems; let i=index">
+                        <td>{{i+1}}</td>
+                        <td>{{product.title}}</td>
+                        <td>
+                            <img width="100px" [src]="product.image" alt="no image">
+                        </td>
+                        <td>{{product.description}}</td>
+                            <td>${{product.price}}</td>
+                        <td>
+                            <i class="fa fa-trash text-danger"></i>
+                        </td>
+                    </tr>
+                   
+                </tbody>
+            </table>
+            <div style="float: right " class="m-5">
+            
+                
+                    <button class="btn btn-danger">Empty Cart</button>
+                    <a routerLink="/" class="btn btn-primary ms-2">Shop More</a>
+                    <button class="btn btn-success ms-2">Check out</button>
+                    <b class="ms-4" for="">Grand Total :0</b>
+                 
+            </div>
+        </div>
+    </div>
+</div>
